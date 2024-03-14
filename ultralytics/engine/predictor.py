@@ -369,6 +369,11 @@ class BasePredictor:
         im0 = self.plotted_img
         # Save imgs
         if self.dataset.mode == "image":
+            # im0 = np.transpose(im0, (2,0,1))
+            save_path = save_path.replace('.npy', '.png')
+            # print(im0.shape, save_path)
+            # unnormalize?
+            
             cv2.imwrite(save_path, im0)
         else:  # 'video' or 'stream'
             frames_path = f'{save_path.split(".", 1)[0]}_frames/'
